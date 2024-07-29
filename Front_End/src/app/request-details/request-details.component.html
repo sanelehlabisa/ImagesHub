@@ -1,0 +1,21 @@
+<div class="bg-dark min-vh-100 overflow-auto">
+    <div class="container">
+        <div class="row justify-content-end py-2">
+            <button class="btn btn-outline-danger rounded-pill d-flex p-2" (click)="close()">
+                <mat-icon>
+                    close
+                </mat-icon>
+            </button>
+        </div>    
+    </div>
+    <div class="container d-flex justify-content-center align-items-center gb-white" *ngIf="isLoading; else imageContent" style="height: calc(100vh - 60px);">
+        <mat-spinner></mat-spinner>
+    </div>
+    <ng-template #imageContent>
+        <div class="container">
+            <div class="row d-flex">
+                <img class="w-100 h-100" [src]="appendToBaseUrl(imageData?.high_res_img_fname)" [alt]="imageData?.high_res_img_fname" style="object-fit: contain; max-width: 100%; max-height: calc(100vh - 60px);">
+            </div>
+        </div>
+    </ng-template>
+</div>

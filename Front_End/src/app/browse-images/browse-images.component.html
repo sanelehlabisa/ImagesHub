@@ -1,0 +1,29 @@
+<div class="bg-dark min-vh-100 overflow-auto">
+    <div class="container">
+        <app-header
+            [placeholder]="'Search images...'"
+            (searchEvent)="onSearch($event)">
+      </app-header>
+    </div>
+    <main class="container bg-white">
+        <div class="row d-flex justify-content-center align-items-center" style="height: calc(100vh - 200px);" *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div class="row pt-4" *ngIf="!isLoading">
+            <div class="col-lg-2 col-md-3 col-sm-4 col-6" *ngFor="let imageData of filteredImageDataList;">
+                <a [routerLink]="['details', imageData.id]" class="card mb-3">
+                    <img [src]="appendToBaseUrl(imageData.low_res_img_fname)" class="card-img-top" [alt]="imageData.low_res_img_fname" style="object-fit: cover; height: 150px;">
+                    <div class="p-2">
+                        <a [routerLink]="['details', imageData.id]" class="card-text d-inline-block text-truncate" title="{{ imageData.low_res_img_fname }}">
+                            {{ imageData.low_res_img_fname }}
+                        </a>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+    <section class="container bg-white py-1 d-none">
+        <app-scroll></app-scroll>
+    </section>
+</div>
+<router-outlet></router-outlet>
