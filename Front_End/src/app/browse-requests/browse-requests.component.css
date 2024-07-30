@@ -1,0 +1,53 @@
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Ensures the table doesn't overflow the page */
+}
+
+.col-id {
+    word-wrap: break-word;
+    max-width: 20px;
+}
+
+.col-email {
+    width: 15%;
+    word-wrap: break-word;
+    max-width: 200px;
+}
+
+.col-image {
+    width: 10%;
+    word-wrap: break-word;
+    max-width: 100px;
+}
+
+.col-reason {
+    width: 40%;
+    word-wrap: break-word;
+    max-width: 400px;
+}
+
+.col-status {
+    width: 10%;
+    word-wrap: break-word;
+    max-width: 100px;
+}
+
+.col-action {
+    width: 10%;
+    word-wrap: break-word;
+    max-width: 100px;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+td, th{
+    border: 1px solid black;
+}
+
+th{
+    background-color: #f8f8fa;
+}
+

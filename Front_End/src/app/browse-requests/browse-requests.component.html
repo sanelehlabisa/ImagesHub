@@ -1,39 +1,37 @@
-<div class="bg-dark min-vh-100 overflow-auto">
-    <div class="container">
-        <app-header 
-            [placeholder]="'search with requester email address...'" 
-            (searchEvent)="search($event)">
-        </app-header>
-    </div>
-    <main class="container bg-white">
+<app-header 
+    [placeholder]="'Search with requester Email Address...'" 
+    (searchEvent)="search($event)">
+</app-header>
+<main class="px-3 bg-dark" style="min-height: calc(100vh - 54px - 47px); display: flex; flex-direction: column;">
+    <div class="bg-white w-100" style="flex: 1;">
         <div class="row d-flex justify-content-center align-items-center" style="height: calc(100vh - 200px);" *ngIf="isLoading">
             <mat-spinner></mat-spinner>
         </div>
-        <div *ngIf="!isLoading">
-            <table class="w-100">
+        <div *ngIf="!isLoading" class="table-container p-5">
+            <table class="w-100 table table-bordered">
                 <thead>
                     <tr class="text-center">
-                        <th>#</th>
-                        <th>email</th>
-                        <th>image</th>
-                        <th>reason</th>
-                        <th>status</th>
-                        <th colspan="2">action</th>
+                        <th class="col-id">#</th>
+                        <th class="col-email">Email Address</th>
+                        <th class="col-image">Image Link</th>
+                        <th class="col-reason">Reason</th>
+                        <th class="col-status">Status</th>
+                        <th class="col-action" colspan="2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="container-fluid" *ngFor="let requestData of filteredData;">
-                        <td class="col-1"> {{ requestData.id }} </td>
-                        <td class="col-3">{{ getEmail(requestData.guest_id) }}</td>
-                        <td class="col-1"><a [routerLink]="['details', requestData.img_id]">image</a></td>
-                        <td class="col-4"> {{ requestData.reason }} </td>
-                        <td class="col-1" [ngStyle]="addStatusStyleColor(requestData.status)"> {{ status[requestData.status] }} </td>
-                        <td class="col-1">
+                    <tr *ngFor="let requestData of filteredData;">
+                        <td class="col-id"> {{ requestData.id }} </td>
+                        <td class="col-email">{{ getEmail(requestData.guest_id) }}</td>
+                        <td class="col-image"><a [routerLink]="['details', requestData.img_id]">image</a></td>
+                        <td class="col-reason"> {{ requestData.reason }} </td>
+                        <td class="col-status" [ngStyle]="addStatusStyleColor(requestData.status)"> {{ status[requestData.status] }} </td>
+                        <td class="col-action">
                             <button class="btn btn-success btn-sm mx-1" (click)="approveRequest(requestData)" [disabled]="requestData.status == 1">
                                 <mat-icon class="d-block">check</mat-icon>
                             </button>
                         </td>
-                        <td class="col-1">
+                        <td class="col-action">
                             <button class="btn btn-danger btn-sm mx-1" (click)="disapproveRequest(requestData)" [disabled]="requestData.status == 2">
                                 <mat-icon class="d-block">close</mat-icon>
                             </button>
@@ -42,8 +40,5 @@
                 </tbody>
             </table>
         </div>
-    </main>
-    <section class="container bg-white py-1 d-none">
-        <app-scroll></app-scroll>
-    </section>
-</div>
+    </div>
+</main>
