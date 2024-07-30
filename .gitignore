@@ -6,3 +6,5 @@ Back_End/__pycache__
 Back_End/venv
 Back_End/token.json
 Back_End/credentials.json
+
+*__pycache__*
