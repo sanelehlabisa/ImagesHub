@@ -11,14 +11,14 @@ The Image Hub is a web application designed to address the challenges of managin
 ## Project Structure
 
 IMAGESHUB
-├── Back_End
-│   ├── (backend files)
-├── Front_End
-│   ├── (frontend files)
-├── .gitignore
-├── docker-compose.yaml
-├── Dockerfile
-└── README.md
+- ├── Back_End
+- │   ├── (backend files)
+- ├── Front_End
+- │   ├── (frontend files)
+- ├── .gitignore
+- ├── docker-compose.yaml
+- ├── Dockerfile
+- └── README.md
 
 ## Image Hub Backend
 
@@ -84,7 +84,7 @@ Navigate to the Back_End folder:
 `cd Back_End`
 Create a Python virtual environment and activate it:
 
-`python3 -m venv venv`
+`python3 -m virtualenv venv`
 `source venv/bin/activate`  # On Windows use `venv\Scripts\activate`
 
 Install the required packages:
