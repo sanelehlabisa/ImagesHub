@@ -1,0 +1,13 @@
+<mat-dialog-actions class="py-1 d-flex justify-content-between">
+  <button class="btn btn-outline-primary d-flex justify-content-center align-items-center" (click)="downloadImage()">
+    <mat-icon>get_app</mat-icon>
+  </button>
+  <button class="btn btn-outline-danger d-flex justify-content-center align-items-center" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>
+<h2 class="py-1 px-4" mat-dialog-title>Image Details</h2>
+<mat-dialog-content class="py-1" style="text-align: center;">
+  <img [src]="data.imageUrl" alt="Image" style="max-height: 550px; width: 100%; object-fit: contain;">
+</mat-dialog-content>
+<p class="py-1 px-4">Filename : {{ data.filename }}</p>

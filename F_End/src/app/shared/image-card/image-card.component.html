@@ -1,0 +1,12 @@
+<span class="card mb-3">
+    <div (click)="openImageModal()" style="position: relative; width: 100%; padding-top: 133.33%; overflow: hidden; cursor: pointer;">
+        <img [src]="blobUrl" class="card-img-top" [alt]="filename" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="p-2 d-flex justify-content-between align-items-center">
+        <a (click)="openImageModal()" class="card-text d-inline-block text-truncate text-primary" style="cursor: pointer;" title="{{ filename }}">
+            {{ filename }}
+        </a>
+        &nbsp;
+        <button class="btn btn-outline-dark" (click)="generateLink(image?.id)">Generate</button>
+    </div>
+</span>
