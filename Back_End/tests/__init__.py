@@ -11,3 +11,5 @@ from .get_request_data import test_get_request_data
 from .get_requests_data import test_get_requests_data
 from .post_request_data import test_post_request_data
 from .update_request_data import test_update_request_data
+
+from .email import test_send_email

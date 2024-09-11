@@ -2,13 +2,13 @@
     [placeholder]="'Search with requester Email Address...'" 
     (searchEvent)="search($event)">
 </app-header>
-<main class="px-3 bg-dark" style="min-height: calc(100vh - 54px - 47px); display: flex; flex-direction: column;">
+<main class="px-3 bg-dark" style="min-height: calc(100vh - 54px - 57px); display: flex; flex-direction: column; padding-bottom: 3px;">
     <div class="bg-white w-100" style="flex: 1;">
         <div class="row d-flex justify-content-center align-items-center" style="height: calc(100vh - 200px);" *ngIf="isLoading">
             <mat-spinner></mat-spinner>
         </div>
-        <div *ngIf="!isLoading" class="table-container p-5">
-            <table class="w-100 table table-bordered">
+        <div *ngIf="!isLoading" class="table-container p-3">
+            <table class="w-100">
                 <thead>
                     <tr class="text-center">
                         <th class="col-id">#</th>
@@ -26,12 +26,12 @@
                         <td class="col-image"><a [routerLink]="['details', requestData.img_id]">image</a></td>
                         <td class="col-reason"> {{ requestData.reason }} </td>
                         <td class="col-status" [ngStyle]="addStatusStyleColor(requestData.status)"> {{ status[requestData.status] }} </td>
-                        <td class="col-action">
+                        <td>
                             <button class="btn btn-success btn-sm mx-1" (click)="approveRequest(requestData)" [disabled]="requestData.status == 1">
                                 <mat-icon class="d-block">check</mat-icon>
                             </button>
                         </td>
-                        <td class="col-action">
+                        <td>
                             <button class="btn btn-danger btn-sm mx-1" (click)="disapproveRequest(requestData)" [disabled]="requestData.status == 2">
                                 <mat-icon class="d-block">close</mat-icon>
                             </button>

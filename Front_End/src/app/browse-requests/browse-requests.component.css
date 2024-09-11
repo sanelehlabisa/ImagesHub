@@ -5,14 +5,13 @@
 }
 
 .col-id {
-    word-wrap: break-word;
-    max-width: 20px;
 }
 
 .col-email {
     width: 15%;
     word-wrap: break-word;
-    max-width: 200px;
+    max-width: 220px;
+    text-align: left;
 }
 
 .col-image {
@@ -25,6 +24,7 @@
     width: 40%;
     word-wrap: break-word;
     max-width: 400px;
+    text-align: left;
 }
 
 .col-status {
@@ -34,9 +34,7 @@
 }
 
 .col-action {
-    width: 10%;
     word-wrap: break-word;
-    max-width: 100px;
 }
 
 table{
@@ -45,9 +43,12 @@ table{
 
 td, th{
     border: 1px solid black;
+    padding: 2px 5px;
+    text-align: center;
 }
 
 th{
+    padding: 7px 10px;
     background-color: #f8f8fa;
 }
 

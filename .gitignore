@@ -1,10 +1,10 @@
-Front_End/.angular
-Front_End/.vscode
-Front_End/node_modules
+*/.angular
+*/.vscode
+*/node_modules
 
-Back_End/__pycache__
-Back_End/venv
-Back_End/token.json
-Back_End/credentials.json
+*/__pycache__
+*/venv
+*/token.json
+*/credentials.json
 
 *__pycache__*
