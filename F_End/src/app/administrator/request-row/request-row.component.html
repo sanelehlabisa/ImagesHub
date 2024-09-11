@@ -1,0 +1,23 @@
+<div class="col-1">
+    {{ request?.id }}
+</div>
+<div class="col-2">
+    {{ getEmailAddress() }}
+</div>
+<div class="col-2 text-primary text-decoration-underline font-italic" style="cursor: pointer;" (click)="openImageModal(getImageUrl())">
+    {{ getImageFilename() }}
+</div>
+<div class="col-4">
+    {{ request?.reason }}
+</div>
+<div class="col-1 text-center" [ngStyle]="addStatusStyleColor(request?.status)">
+    {{ status[request?.status] }}
+</div>
+<div class="col-2 text-center">
+    <button class="btn btn-success btn-sm mx-1" (click)="updateRequest(1)" [disabled]="request?.status == 1">
+        <mat-icon class="d-block">check</mat-icon>
+    </button>
+    <button class="btn btn-danger btn-sm mx-1" (click)="updateRequest(2)" [disabled]="request?.status == 2">
+        <mat-icon class="d-block">close</mat-icon>
+    </button>
+</div>
