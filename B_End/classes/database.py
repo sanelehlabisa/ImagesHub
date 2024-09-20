@@ -98,6 +98,7 @@ class Database:
             set_clause = ', '.join([f"`{key}` = ?" for key in data])
             where_clause = ' AND '.join([f"`{key}` = ?" for key in criteria])
             sql = f"UPDATE `{self.table_name}` SET {set_clause} WHERE {where_clause}"
+            print(sql)
             self.cur.execute(sql, list(data.values()) + list(criteria.values()))
             self.conn.commit()
             return True

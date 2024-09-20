@@ -95,8 +95,7 @@ def post_image() -> tuple:
 
     load_dotenv()
     db = Database(os.getenv('DATABASE_NAME'))
-    if not db.clear():
-        exit()
+    
     db.set_table_name('image')  
 
     data = request.json

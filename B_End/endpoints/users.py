@@ -74,8 +74,7 @@ def post_user() -> tuple:
     
     load_dotenv()
     db = Database(os.getenv('DATABASE_NAME'))
-    if not db.clear():
-        exit()
+    
     db.set_table_name('guest')
 
     data = request.json

@@ -33,8 +33,7 @@ export class SignInComponent {
   signIn(): void {
     this.userService.signIn(this.email?.value).subscribe({
       next: (user: User) => {
-        this.userService.setUser(user); 
-        console.log(user)
+        this.userService.setUser(user);
         let routerUrl: string = user.type == 0 ? "/guest/browse-images" : "/administrator/browse-requests";
         this.router.navigate([routerUrl]);
       },

@@ -1,10 +1,11 @@
-from flask import request, jsonify # type: ignore
+from flask import request, jsonify, send_from_directory, abort # type: ignore
 from classes.link import Link
+from classes.image import Image
 from classes.database import Database
 import os
 from dotenv import load_dotenv
 
-
+SERVER_DIRECTORY = os.getenv('SERVER_DIRECTORY')
 
 def get_links() -> tuple:
     """
@@ -65,32 +66,71 @@ def get_link(id: int) -> tuple:
     except Exception as e:
         return jsonify({"message": f"An error occurred: {str(e)}"}), 500
 
+
+def download_image(key: str) -> tuple:
+    """
+    Description: Handling the GET /api/v2/links<string:key> endpoint.
+    Input: Parameter key.
+    Output: Download image or JSON or 'message' key describing reason for process failure.
+    """
+
+    db = Database(os.getenv('DATABASE_NAME'))
+    
+    db.set_table_name('link')
+
+    try:
+        links_list = db.read(criteria={'key': key})
+        
+        if links_list:
+            link = links_list[0]
+            lnk = Link(*link)
+            if lnk.limit == 0:
+                return jsonify({"message": "Link is expired."}), 403
+            db.set_table_name('image')
+            images_list = db.read(criteria={'id': lnk.image_id})
+            if images_list:
+                image = images_list[0]
+                img = Image(*image)
+                filename = img.high_res_img_fname
+                db.set_table_name('link')
+                lnk.limit = lnk.limit - 1
+                if db.update({"limit": lnk.limit},{'id': lnk.id}):
+                    return send_from_directory(SERVER_DIRECTORY, filename, as_attachment=True)
+                else:
+                    return jsonify({"message": "Link update failed."}), 404
+            else:
+                return jsonify({"message": "Image not found."}), 404
+        else:
+            return jsonify({"message": "Link not found."}), 404
+
+    except FileNotFoundError:
+        abort(404)  # Return a 404 error if the file is not found
+    except Exception as e:
+        return jsonify({"message": f"An error occurred: {str(e)}"}), 500
+
+
 def post_link() -> tuple:
     """
     Description: Handling the POST /api/v2/links endpoint.
     Input: JSON with ('id', 'image_id', 'key', 'limit').
     Output: JSON of Link object with 'message' key indicating success or failure.
     """
-
+    print(2)
     load_dotenv()
     db = Database(os.getenv('DATABASE_NAME'))
-    if not db.clear():
-        exit()
     db.set_table_name('link')
 
     data = request.json
-
     try:
         if all(key in data for key in ['image_id', 'key', 'limit']):
-                if db.insert({
-                    'image_id': data['image_id'],
-                    'key': data['key'],
-                    'key': data['limit']
-                    }):
-                    return jsonify({"message": "Link inserted successfully!"}), 200
-                else:
-                    return jsonify({"message": "Link insertion failed!"}), 501
-            
+            if db.insert({
+                'image_id': data['image_id'],
+                'key': data['key'],
+                'limit': data['limit']
+                }):
+                return jsonify({"message": "Link inserted successfully!"}), 200
+            else:
+                return jsonify({"message": "Link insertion failed!"}), 501
         else:    
             return jsonify({"message": "Missing key(s) 'image_id', 'key', 'limit'"}), 400
     except Exception as e:

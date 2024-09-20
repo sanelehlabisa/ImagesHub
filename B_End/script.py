@@ -6,7 +6,7 @@ from endpoints.emails import send_email
 from endpoints.users import get_users, get_user, post_user, auth
 from endpoints.images import get_images, get_image, serve_image, post_image
 from endpoints.requests import get_requests, get_request, post_request, put_request
-from endpoints.links import get_links, get_link, post_link, put_link
+from endpoints.links import get_links, get_link, download_image, post_link, put_link
 
 app = Flask(__name__)
 load_dotenv()
@@ -138,6 +138,10 @@ def get_link_route(id: int):
         return validation_response
     return get_link(id)
 
+@app.route('/api/v2/links/<string:key>', methods=['GET'])
+def download_link_route(key: str):
+    return download_image(key)
+
 @app.route('/api/v2/links', methods=['POST'])
 def post_link_route():
     validation_response = backend.validate_api_key()
@@ -154,4 +158,4 @@ def put_link_route():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='localhost', debug=True)

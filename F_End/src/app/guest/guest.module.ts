@@ -6,11 +6,13 @@ import { GuestComponent } from './guest.component';
 
 import { SharedModule } from '../shared/shared.module';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { RequestDetailsComponent } from './request-details/request-details.component';
 
 
 @NgModule({
   declarations: [
-    GuestComponent
+    GuestComponent,
+    RequestDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -75,8 +75,7 @@ def post_request() -> str:
 
     load_dotenv()
     db = Database(os.getenv('DATABASE_NAME'))
-    if not db.clear():
-        exit()
+    
     db.set_table_name('request')
 
     data = request.json
