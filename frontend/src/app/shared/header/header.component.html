@@ -1,0 +1,20 @@
+<div>
+    <div class="bg-white" style="height: 70px; border-top: 10px solid #007bff;">
+        <img src="assets/images/NRF25_SARAO.png" height="100%" alt="SARAO Logo">
+    </div>
+</div>
+<nav class="navbar bg-dark">
+    <div class="input-group d-flex justify-content-left align-items-center" style="width: 75vw; max-width: 80%;">
+        <input id="search" class="p-2" style="width: 80%; height: 38px; border-color: white;" type="search" [placeholder]="placeholder" [(ngModel)]="searchText" (ngModelChange)="search()">
+        <button class="btn btn-primary d-flex align-items-center search" style="margin-left: 0px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;" type="submit" matTooltip="search" (click)="search()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+    <button class="btn btn-danger d-flex align-items-center" type="submit" matTooltip="log out" (click)="signOut()">
+        <mat-icon>logout</mat-icon> 
+    </button>
+</nav>
+<div class="text-right d-flex flex-row-reverse bg-dark links px-3">
+    <a class="px-5" [ngClass]="{'active-tab': isRequestsActive}" [ngStyle]="{'display': !isAdministrator ? 'none' : 'initial'}" routerLink="/administrator/browse-requests" routerLinkActive="active">Browse Requests</a>
+    <a class="px-5" [ngClass]="{'active-tab': !isRequestsActive}" [routerLink]="['/' + ((isAdministrator)? 'administrator' : 'guest') + '/browse-images']" routerLinkActive="active">Browse Images</a>
+</div>

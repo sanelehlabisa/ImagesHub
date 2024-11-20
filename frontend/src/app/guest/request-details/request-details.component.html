@@ -1,0 +1,33 @@
+<mat-dialog-actions class="py-1 d-flex justify-content-end">
+    <button class="btn btn-danger d-flex justify-content-center align-items-center" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-dialog-actions>
+  <h2 class="py-1 px-4" mat-dialog-title>Request Details</h2>
+  <mat-dialog-content class="py-1" style="text-align: center;">
+    <h3 class="px-0 text-left text-dark">Rules and Regualtions</h3>
+    <ul class="px-4 text-left text-dark">
+        <li>SARAO images are for personal use only and must not be shared publicly.</li>
+        <li>Commercial use of SARAO images is strictly prohibited.</li>
+        <li>Modification or alteration of SARAO images is not allowed without permission.</li>
+        <li>Attribution to the original creator must be maintained if shared privately.</li>
+        <li>Distribution of SARAO images in any form, including digital or print, is forbidden.</li>
+    </ul>
+    
+    <form [formGroup]="formGroup" name="form" class="form-group" (submit)="submitRequest()">
+        <textarea formControlName="reason" class="px-4" id="form-reason" cols="30" rows="10" style="max-height: 550px; width: 100%;" placeholder="Enter the reasin for requesting access to this high resolution image...">
+
+        </textarea>
+        <div class="alert alert-danger" *ngIf="reason?.touched && reason?.invalid">
+                <ng-container *ngIf="reason?.errors?.['required']">
+                    Reason is required...
+                </ng-container>
+                <div *ngIf="reason?.errors?.['pattern']">
+                    Invalid Reason...
+                </div>
+            </div>
+        <div class="text-center">
+            <button class="btn btn-primary" [disabled]="formGroup.invalid">Submit</button>
+        </div>
+    </form>
+  </mat-dialog-content>

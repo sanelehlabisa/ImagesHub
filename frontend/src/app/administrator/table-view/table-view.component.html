@@ -1,0 +1,36 @@
+<div class="px-3 bg-dark" style="min-height: calc(100vh - 144px);">
+    <div class="bg-white" style="height: calc(100vh - 150px);">
+        <div class="row d-flex justify-content-center align-items-center" style="height: calc(100vh - 200px);" *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="!isLoading" class="table-container p-4">
+            <div class="row bg-dark text-white py-1 text-center">
+                <div class="col-1">
+                    <strong>#</strong>
+                </div>
+                <div class="col-2">
+                    <strong>Email Address</strong>
+                </div>
+                <div class="col-2">
+                    <strong>Image Link</strong>
+                </div>
+                <div class="col-4">
+                    <strong>Reason</strong>
+                </div>
+                <div class="col-1">
+                    <strong>Status</strong>
+                </div>
+                <div class="col-2">
+                    <strong>Action</strong>
+                </div>
+            </div>
+            <app-request-row *ngFor="let request of filteredRequestList; let i = index"
+                class="row py-1"
+                style="min-height: 45px; border-bottom: 1px solid black"
+                [request]="request"
+                [index]="i"
+                (updateEvent)="updateRequest($event)"
+            ></app-request-row>
+        </div>
+    </div>
+</div>

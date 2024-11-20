@@ -1,0 +1,49 @@
+a {
+    border: 1px solid white;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+    cursor: pointer;
+    height: 20px;
+    border-bottom: none;
+    text-decoration: none;
+}
+
+a:not(.active-tab) {
+    background-color: #343a40;
+    color: white;
+}
+
+a.active-tab {
+    background-color: white; 
+    color: #343434; 
+}
+input{
+    border-radius: 0px;
+    border: 1px solid black;
+}
+
+button{
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    padding: 0px;
+}
+mat-icon{
+    width: 100%;
+}
+@media (max-width: 570px) {
+    .links a{
+        padding: 2px;
+    }
+}
+input:placeholder-shown{
+    font-style: italic;
+}
+input[type='text']{
+    border: none;
+    outline: none;
+}
+
+input:focus{
+    outline: none;
+}
