@@ -1,0 +1,14 @@
+# Frontend
+*/.angular
+*/.vscode
+*/node_modules
+
+# Backend
+*/__pycache__
+*/venv
+*.env
+*__pycache__*
+__pycache__/
+*.pyc
+*.pyo
+*.db
