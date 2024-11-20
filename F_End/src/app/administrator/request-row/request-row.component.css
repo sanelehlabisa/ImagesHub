@@ -1,6 +1,0 @@
-.col-1, .col-2, .col-4 {
-    overflow: hidden;          /* Hide overflow content */
-    white-space: normal;      /* Allow text to wrap to the next line */
-    text-overflow: ellipsis;  /* Optional: Show ellipsis for overflowed text */
-    word-wrap: break-word;    /* Break long words if necessary */
-}

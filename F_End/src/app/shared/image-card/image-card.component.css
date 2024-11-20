@@ -1,5 +1,0 @@
-.card-text {
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden;    /* Hide overflow */
-    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
-}

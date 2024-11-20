@@ -1,9 +1,0 @@
-<div class="d-flex justify-content-between pt-2 pb-2">
-    <button class="btn btn-outline-secondary d-flex align-items-center" (click)="previousPage()" [disabled]="page === 1" matTooltip="previous page">
-        <mat-icon>keyboard_arrow_left</mat-icon>
-    </button>
-    <span>Page {{ page }} of {{ ceil(dataList.length / pageSize) }}</span>
-    <button class="btn btn-outline-secondary d-flex align-items-center" (click)="nextPage()" [disabled]="page === ceil(dataList.length / pageSize)" matTooltip="next page">
-        <mat-icon>keyboard_arrow_right</mat-icon>
-    </button>
-</div>
