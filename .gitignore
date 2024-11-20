@@ -8,3 +8,7 @@
 */credentials.json
 
 *__pycache__*
+
+.env
+
+*.db
