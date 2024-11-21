@@ -90,6 +90,6 @@ def test_delete_user() -> None:
         assert user_data["type"] == user_dict["type"]
 
 def test_database_clear() -> None:
-    """This function tests the functionality of the DB clear function"""
+    """This function tests the functionality of the Database clear function"""
     db = Database()
     assert db.clear() == True
