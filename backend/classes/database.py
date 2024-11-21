@@ -96,7 +96,6 @@ class Database:
             set_clause = ', '.join([f"`{key}` = ?" for key in data])
             where_clause = ' AND '.join([f"`{key}` = ?" for key in criteria])
             sql = f"UPDATE `{table_name}` SET {set_clause} WHERE {where_clause}"
-            print(sql)
             self.cur.execute(sql, list(data.values()) + list(criteria.values()))
             self.conn.commit()
             return True
@@ -110,7 +109,6 @@ class Database:
                 # Drop all tables
                 self.cur.executescript("""
                     DROP TABLE IF EXISTS `user`;
-                    DROP TABLE IF EXISTS `administrator`;
                     DROP TABLE IF EXISTS `image`;
                     DROP TABLE IF EXISTS `request`;
                     DROP TABLE IF EXISTS `link`;
