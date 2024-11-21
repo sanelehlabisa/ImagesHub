@@ -5,7 +5,7 @@ from classes import Database
 def test_database_read() -> None:
     """This function tests the functionality of the read to database function"""
     db = Database()
-    users = db.read("users")
+    users = db.read("user")
     
     assert "testing" in db.name
     assert isinstance(users, list)
